@@ -1,184 +1,188 @@
 html {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 html,
 body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
-    font-family: 'Coda', cursive;
+  background: #ffffff url("../img/geometry2.png"); /* Background pattern from Subtle Patterns */
+  font-family: "Coda", cursive;
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 h1 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
 }
 
 #start-game {
-    display: none;
-    width: 100%;
-    height: 100%;
+  display: none;
+  width: 100%;
 }
 
 /*
 * Styles for welcome screen
 */
 .green-btn {
-    height: 48px;
-    padding: 0 30px;
-    border-radius: 10px;
-    font-size: 1.5em;
-    text-align: center;
-    color: #fff;
-    border: none;
-    background-color: #4eb5f1;
-    transition: all 0.2s;
+  height: 48px;
+  padding: 0 30px;
+  border-radius: 10px;
+  font-size: 1.5em;
+  text-align: center;
+  color: #fff;
+  border: none;
+  background-color: #4eb5f1;
+  transition: all 0.2s;
 }
 
-.green-btn:hover{
-    background-color:#4095c6;
-    cursor: pointer;
+.green-btn:hover {
+  background-color: #4095c6;
+  cursor: pointer;
 }
+
 /*
  * Styles for the deck of cards
  */
 
 .deck {
-    width: 660px;
-    min-height: 680px;
-    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
-    padding: 32px;
-    border-radius: 10px;
-    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 0 3em;
+  width: 660px;
+  min-height: 680px;
+  background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+  padding: 32px;
+  border-radius: 10px;
+  box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 3em;
 }
 
 .deck .card {
-    transform: rotateY(180deg);
-    height: 125px;
-    width: 125px;
-    background: #2e3d49;
-    font-size: 0;
-    color: #ffffff;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
-    transition: 150ms;
+  transform: rotateY(180deg);
+  height: 125px;
+  width: 125px;
+  background: #2e3d49;
+  font-size: 0;
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+  transition: 150ms;
 }
 
 .deck .card.open {
-    background: #02b3e4;
-    cursor: default;
+  background: #02b3e4;
+  cursor: default;
 }
 
 .deck .card.show {
-    transform: rotateY(0deg);
-    font-size: 33px;
+  transform: rotateY(0deg);
+  font-size: 33px;
 }
 
 .deck .card.match {
-    cursor: default;
-    background: #02ccba;
-    font-size: 33px;
+  cursor: default;
+  background: #02ccba;
+  font-size: 33px;
 }
 
 .deck .card.no-match {
-    transform: rotateY(0);
-    cursor: default;
-    background: #e04b4b;
-    font-size: 33px;
-    animation: shake-card 500ms linear;
+  transform: rotateY(0);
+  cursor: default;
+  background: #e04b4b;
+  font-size: 33px;
+  animation: shake-card 500ms linear;
 }
 
 @keyframes shake-card {
-    50% {transform: translate(2px,0);}
-    60% {transform: translate(-2px,0);}
-    70% {transform: translate(2px,0);}
-    80% {transform: translate(-2px,0);}
+  50% {
+    transform: translate(2px, 0);
   }
+  60% {
+    transform: translate(-2px, 0);
+  }
+  70% {
+    transform: translate(2px, 0);
+  }
+  80% {
+    transform: translate(-2px, 0);
+  }
+}
 
 /*
  * Styles for the Score Panel
  */
 
-
-
 .score-panel {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: left;
-    width: 345px;
-    margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: left;
+  width: 345px;
+  margin-bottom: 10px;
 }
 
 .score-panel .score-details {
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
 }
 
 .stars {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-    margin: 0 5px 0 0;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  margin: 0 5px 0 0;
 }
 
 .stars li {
-    list-style: none;
-    display: inline-block;
+  list-style: none;
+  display: inline-block;
 }
 
 .score-details > span {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .moves-counter {
-    font-size: 1.1em;
-    width: 0;
-    /* border: solid; */
+  font-size: 1.1em;
+  width: 0;
 }
 .moves-title {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .score-panel .restart {
-    float: right;
-    cursor: pointer;
+  float: right;
+  cursor: pointer;
 }
 
 .timer {
-    font-size: 1.1em;
-    width: 0;
+  font-size: 1.1em;
+  width: 0;
 }
 
 /*
@@ -186,36 +190,47 @@ h1 {
 */
 
 .check-mark {
-    font-size: 0em;
-    animation: check-mark 1s forwards;
-    /* border: solid; */
-    width: 50px;
-    height: 30px;
+  font-size: 0em;
+  animation: check-mark 1s forwards;
+  width: 50px;
+  height: 30px;
 }
 
 @keyframes check-mark {
-    50% {font-size: 4em;}
-/*   80% {font-size: 40px} */
-  100% {font-size: 3em;}
+  50% {
+    font-size: 4em;
+  }
+  100% {
+    font-size: 3em;
+  }
 }
 
+#finish-game  {
+    text-align: center;
+}
+
+#finish-game>p > ul {
+    color: rgb(255, 196, 0);
+}
 
 /*
 * Media queries
 */
 
 @media screen and (max-width: 680px) {
-    .deck {
-        width: 95%;
-        height: 20px;
-    }
-    .deck .card {
-        width: 21%;
-        height: 20vw;
-    }
-    .container {
-        justify-content: space-between;
-        /* height: 100%; */
-    }
+  .deck {
+    width: 95%;
+    min-height: 80vh;
+    padding: 1.3em;
+    margin: auto;
+  }
+  .deck .card {
+    width: 21%;
+    height: 15vh;
+  }
+
+  .score-panel {
+      width: 80%;
+  }
 
 }
