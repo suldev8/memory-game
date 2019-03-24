@@ -340,7 +340,7 @@ function finishGame() {
   const [moves, stars, duration] = getScores();
   const scoresDetails = document.createElement('p');
   scoresDetails.innerHTML = `
-  moves: ${moves}<br>
+  Moves: ${moves}<br>
   ${stars.outerHTML}<br>
   Duration: ${duration}`;
 
