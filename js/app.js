@@ -245,13 +245,6 @@ function cardsListener(event) {
   }
 }
 
-function playAgainListener(event) {
-  document.querySelector(`#${FINISH_GAME}`).remove();
-  document.querySelector(`#${START_GAME}`).style.display = 'flex';
-  restartListener();
-  event.currentTarget.removeEventListener('click', playAgainListener);
-}
-
 function restartListener() {
   // Reset opened cards counter
   openedCardsCounter = 0;
@@ -273,6 +266,16 @@ function restartListener() {
   // Show shuffled cards and start playing
   showCards();
   setTimeout(addClickListenerOnCards, HIDING_CARDS_DELAY);
+}
+
+function playAgainListener(event) {
+  document.querySelector(`#${FINISH_GAME}`).remove();
+  document.querySelector(`#${START_GAME}`).style.display = 'flex';
+  
+  addClickListenerOnRestart();
+  restartListener();
+
+  event.currentTarget.removeEventListener('click', playAgainListener);
 }
 
 /*
