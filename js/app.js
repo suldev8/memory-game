@@ -1,48 +1,48 @@
 /* eslint-disable no-console */
 
 // IDs constants
-const GAME_CONTAINER = "game-container";
-const WELCOME_SCREEN = "welcome-screen";
-const START_GAME = "start-game";
-const FINISH_GAME = "finish-game";
-const START_BTN = "start-btn";
+const GAME_CONTAINER = 'game-container';
+const WELCOME_SCREEN = 'welcome-screen';
+const START_GAME = 'start-game';
+const FINISH_GAME = 'finish-game';
+const START_BTN = 'start-btn';
 
 // Classes constants
-const CONTAINER = "container";
-const DECK = "deck";
-const CARD = "card";
-const OPEN_CARD = "open";
-const SHOW_CARD = "show";
-const MATCH_CARD = "match";
-const NO_MATCH_CARD = "no-match";
-const FONT_AWESOME = "fa";
-const STARS = "stars";
-const EMPTY_STAR = "fa-star-o";
-const FULL_STAR = "fa-star";
-const CHECK_ICON = "fa-check";
-const CHECK_MARK = "check-mark";
-const GREEN_BTN = "green-btn";
-const TIMER = "timer";
-const MOVES_COUNTER = "moves-counter";
-const RESTART = "restart";
+const CONTAINER = 'container';
+const DECK = 'deck';
+const CARD = 'card';
+const OPEN_CARD = 'open';
+const SHOW_CARD = 'show';
+const MATCH_CARD = 'match';
+const NO_MATCH_CARD = 'no-match';
+const FONT_AWESOME = 'fa';
+const STARS = 'stars';
+const EMPTY_STAR = 'fa-star-o';
+const FULL_STAR = 'fa-star';
+const CHECK_ICON = 'fa-check';
+const CHECK_MARK = 'check-mark';
+const GREEN_BTN = 'green-btn';
+const TIMER = 'timer';
+const MOVES_COUNTER = 'moves-counter';
+const RESTART = 'restart';
 
 const CARD_TYPES = [
-  "fa-anchor",
-  "fa-anchor",
-  "fa-bicycle",
-  "fa-bicycle",
-  "fa-bolt",
-  "fa-bolt",
-  "fa-bomb",
-  "fa-bomb",
-  "fa-cube",
-  "fa-cube",
-  "fa-diamond",
-  "fa-diamond",
-  "fa-leaf",
-  "fa-leaf",
-  "fa-paper-plane-o",
-  "fa-paper-plane-o"
+  'fa-anchor',
+  'fa-anchor',
+  'fa-bicycle',
+  'fa-bicycle',
+  'fa-bolt',
+  'fa-bolt',
+  'fa-bomb',
+  'fa-bomb',
+  'fa-cube',
+  'fa-cube',
+  'fa-diamond',
+  'fa-diamond',
+  'fa-leaf',
+  'fa-leaf',
+  'fa-paper-plane-o',
+  'fa-paper-plane-o'
 ];
 
 // Global variables
@@ -63,10 +63,10 @@ const FINISH_GAME_DELAY = 1000;
  */
 
 function getTimer() {
-  performance.measure("timer", "start-timer", "now-timer");
-  const measures = performance.getEntriesByName("timer");
+  performance.measure('timer', 'start-timer', 'now-timer');
+  const measures = performance.getEntriesByName('timer');
   const duration = measures[0].duration;
-  performance.clearMeasures("timer");
+  performance.clearMeasures('timer');
   return new Date(duration).toISOString().slice(14, -5);
 }
 
@@ -142,13 +142,13 @@ function placeCards(shuffledTypes) {
 }
 
 function createCardsElements(cardTypes) {
-  const deck = document.createElement("ul");
-  deck.classList.add("deck");
+  const deck = document.createElement('ul');
+  deck.classList.add('deck');
 
   // Loop through card types to create cards elements
   for (let cardType of cardTypes) {
-    const cardElement = document.createElement("li");
-    const iElement = document.createElement("i");
+    const cardElement = document.createElement('li');
+    const iElement = document.createElement('i');
 
     cardElement.classList.add(CARD, OPEN_CARD, SHOW_CARD);
     iElement.classList.add(FONT_AWESOME);
@@ -159,7 +159,7 @@ function createCardsElements(cardTypes) {
   }
   const startGame = document.querySelector(`#${START_GAME}`);
   startGame.appendChild(deck);
-  startGame.style.display = "flex";
+  startGame.style.display = 'flex';
 }
 
 function matchPair(pairOfCards) {
@@ -177,7 +177,7 @@ function matchPair(pairOfCards) {
     if (openedCardsCounter === CARD_TYPES.length - 2) {
       document
         .querySelector(`.${DECK}`)
-        .removeEventListener("click", cardsListener);
+        .removeEventListener('click', cardsListener);
       showCards();
       setTimeout(finishGame, FINISH_GAME_DELAY);
       openedCardsCounter = 0;
@@ -219,8 +219,8 @@ function shuffle(array) {
  */
 
 function startListener(event) {
-  document.querySelector(`#${WELCOME_SCREEN}`).style.display = "none";
-  event.currentTarget.removeEventListener("click", startListener);
+  document.querySelector(`#${WELCOME_SCREEN}`).style.display = 'none';
+  event.currentTarget.removeEventListener('click', startListener);
   startGame();
 }
 
@@ -229,7 +229,7 @@ function cardsListener(event) {
   const { tagName, classList } = target;
 
   // If the card is not opend yet then add OPEN_CARD and SHOW_CARD classes
-  if (tagName.toLowerCase() === "li" && !classList.contains(OPEN_CARD)) {
+  if (tagName.toLowerCase() === 'li' && !classList.contains(OPEN_CARD)) {
     classList.add(OPEN_CARD, SHOW_CARD);
     pairOfCards.push(target);
 
@@ -244,9 +244,9 @@ function cardsListener(event) {
 
 function playAgainListener(event) {
   document.querySelector(`#${FINISH_GAME}`).remove();
-  document.querySelector(`#${START_GAME}`).style.display = "flex";
+  document.querySelector(`#${START_GAME}`).style.display = 'flex';
   restartListener();
-  event.currentTarget.removeEventListener("click", playAgainListener);
+  event.currentTarget.removeEventListener('click', playAgainListener);
 }
 
 function restartListener() {
@@ -255,7 +255,7 @@ function restartListener() {
 
   // Reset Timer and clear marks
   clearInterval(timerInterval);
-  document.querySelector(`.${TIMER}`).innerText = "00:00";
+  document.querySelector(`.${TIMER}`).innerText = '00:00';
   performance.clearMarks();
 
   // Reset stars and moves counter
@@ -279,21 +279,21 @@ function restartListener() {
  */
 
 function addClickListenerOnCards() {
-  performance.mark("start-timer");
+  performance.mark('start-timer');
   timerInterval = setInterval(function() {
-    performance.mark("now-timer");
+    performance.mark('now-timer');
     const timer = document.querySelector(`.${TIMER}`);
     timer.innerText = getTimer();
   }, 1000);
   hideCards();
   const deck = document.querySelector(`.${DECK}`);
-  deck.addEventListener("click", cardsListener);
+  deck.addEventListener('click', cardsListener);
 }
 
 function addClickListenerOnRestart() {
   const restart = document.querySelector(`.${RESTART}`);
 
-  restart.addEventListener("click", restartListener);
+  restart.addEventListener('click', restartListener);
 }
 
 /*
@@ -304,7 +304,7 @@ function addClickListenerOnRestart() {
 
 function welcomeScreen() {
   const startBtn = document.querySelector(`#${START_BTN}`);
-  startBtn.addEventListener("click", startListener);
+  startBtn.addEventListener('click', startListener);
 }
 
 function startGame() {
@@ -317,31 +317,31 @@ function startGame() {
 
 function finishGame() {
   // Hide the start-game section
-  document.querySelector(`#${START_GAME}`).style.display = "none";
+  document.querySelector(`#${START_GAME}`).style.display = 'none';
 
   // Create finish-game container
-  const finishContainer = document.createElement("div");
+  const finishContainer = document.createElement('div');
   finishContainer.classList.add(CONTAINER);
-  finishContainer.id = "finish-game";
+  finishContainer.id = 'finish-game';
 
   // Create congratulations elements
-  const checkIcon = document.createElement("i");
+  const checkIcon = document.createElement('i');
   checkIcon.classList.add(FONT_AWESOME, CHECK_ICON, CHECK_MARK);
-  const congratsHeading = document.createElement("h2");
-  congratsHeading.innerText = "Congratulations you finshed the game!";
+  const congratsHeading = document.createElement('h2');
+  congratsHeading.innerText = 'Congratulations you finshed the game!';
 
   // Create elements for score details
   const [moves, stars, duration] = getScores();
-  const scoresDetails = document.createElement("p");
+  const scoresDetails = document.createElement('p');
   scoresDetails.innerHTML = `
   moves: ${moves}<br>
   ${stars.outerHTML}<br>
   Duration: ${duration}`;
 
   // Create restart button
-  const playAgain = document.createElement("button");
+  const playAgain = document.createElement('button');
   playAgain.classList.add(GREEN_BTN);
-  playAgain.innerText = "Play again";
+  playAgain.innerText = 'Play again';
 
   // Append all elements to the finish-game section
   finishContainer.appendChild(checkIcon);
@@ -351,7 +351,7 @@ function finishGame() {
 
   // Append finish-game to game-container
   document.querySelector(`#${GAME_CONTAINER}`).appendChild(finishContainer);
-  playAgain.addEventListener("click", playAgainListener);
+  playAgain.addEventListener('click', playAgainListener);
 }
 
 // Call the welcomeScreen function
