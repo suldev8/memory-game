@@ -205,12 +205,12 @@ h1 {
   }
 }
 
-#finish-game  {
-    text-align: center;
+#finish-game {
+  text-align: center;
 }
 
-#finish-game>p > ul {
-    color: rgb(255, 196, 0);
+#finish-game > p > ul {
+  color: rgb(255, 196, 0);
 }
 
 /*
@@ -230,7 +230,6 @@ h1 {
   }
 
   .score-panel {
-      width: 80%;
+    width: 80%;
   }
-
 }
