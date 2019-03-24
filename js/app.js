@@ -173,11 +173,14 @@ function matchPair(pairOfCards) {
     secondCard.classList.add(MATCH_CARD);
     openedCardsCounter += 2;
 
-    // If rewelcomeScreened two cards show the rewelcomeScreening and finish the game
+    // If remain only two cards show them and finish the game
     if (openedCardsCounter === CARD_TYPES.length - 2) {
-      document
-        .querySelector(`.${DECK}`)
-        .removeEventListener('click', cardsListener);
+      // Remove listeners from deck and restart
+      const deck = document.querySelector(`.${DECK}`);
+      const restartBtn = document.querySelector(`.${RESTART}`);
+      deck.removeEventListener('click', cardsListener);
+      restartBtn.removeEventListener('click', restartListener);
+
       showCards();
       setTimeout(finishGame, FINISH_GAME_DELAY);
       openedCardsCounter = 0;
