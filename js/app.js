@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+'use strict';
 
 // IDs constants
 const GAME_CONTAINER = 'game-container';
